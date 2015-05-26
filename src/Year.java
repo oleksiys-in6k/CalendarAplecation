@@ -1,12 +1,12 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.*;
 
 public class Year {
 
     int year;
     ArrayList<MonthCalendarFile> monthes = new ArrayList<MonthCalendarFile>();
-
 
     public Year(int year, ArrayList<String> sMonthes) {
         this.year = year;
@@ -16,10 +16,26 @@ public class Year {
     private void fillMonthes(ArrayList<String> sMonthes) {
         if (sMonthes.size() == 0)
             inputAllMonthes();
-
         else {
             inputExistingMonth(sMonthes);
+
+            sortingMonthes(sMonthes);
         }
+    }
+
+    private void sortingMonthes(ArrayList<String> sMonthes) {
+        ArrayList <Integer> listOfMonthsIndex = new ArrayList();
+        for ( int  i= 0 ; i < sMonthes.size(); i++)
+            listOfMonthsIndex.add(new SwitchesOfMonth().getMonthIndexByName(sMonthes.get(i)));
+
+        Collections.sort(listOfMonthsIndex);
+        sMonthes.clear();
+
+        for (int i = 0;  i < listOfMonthsIndex.size(); i++) {
+            sMonthes.add(new SwitchesOfMonth().getMonthNameByIndex(listOfMonthsIndex.get(i)));
+        }
+        System.out.println(listOfMonthsIndex);
+        System.out.println(sMonthes);
     }
 
     private void inputExistingMonth(ArrayList<String> sMonthes) {
@@ -27,30 +43,12 @@ public class Year {
         c.set(Calendar.YEAR, year);
         c.set(Calendar.DAY_OF_MONTH, 1);
 
-        for (String month : sMonthes) {
-            c.set(Calendar.MONTH, getCorrectMonth(month));
+        for (String sMonthe : sMonthes) {
+            c.set(Calendar.MONTH, new SwitchesOfMonth().getMonthIndexByName(sMonthe));
             monthes.add(new MonthCalendarFile(c));
         }
     }
 
-    private int getCorrectMonth(String s) {
-
-        switch (s.toLowerCase()) {
-            case "january": return Calendar.JANUARY;
-            case "february": return Calendar.FEBRUARY;
-            case "march": return Calendar.MARCH;
-            case "april": return Calendar.APRIL;
-            case "may": return Calendar.MARCH;
-            case "june": return Calendar.JUNE;
-            case "july": return Calendar.JULY;
-            case "august": return Calendar.AUGUST;
-            case "september": return Calendar.SEPTEMBER;
-            case "october": return Calendar.OCTOBER;
-            case "november": return Calendar.NOVEMBER;
-            case "december": return Calendar.DECEMBER;
-        }
-        return -1;
-    }
 
     private void inputAllMonthes() {
         Calendar c = Calendar.getInstance();
@@ -61,11 +59,11 @@ public class Year {
             c.set(Calendar.MONTH, monthNumber);
             monthes.add(new MonthCalendarFile(c));
         }
+
     }
 
     public void writeToFile() throws FileNotFoundException {
         for(MonthCalendarFile mcf : monthes) {
-
             mcf.writeToFile();
         }
     }

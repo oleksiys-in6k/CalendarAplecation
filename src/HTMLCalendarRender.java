@@ -17,10 +17,6 @@ public class HTMLCalendarRender extends AbstractMonthCalendarRenderer {
 
     private static final String SPACE = " ";
 
-
-
-    private static final String NEWCOLOR = "style=\\\"color: green\\";
-
     private static final String COLOR = "bgcolor=";
     private static final String RED = "\"#FF0000\"";
     private static final String BLACK = "\"#000000\"";

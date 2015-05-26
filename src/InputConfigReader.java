@@ -3,12 +3,11 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 
 public class InputConfigReader {
 
-    public ArrayList<Year> getYearsFromConfig () throws FileNotFoundException {
+    public ArrayList<Year> getYearsFromConfig() throws FileNotFoundException {
         ArrayList<Year> result;
         result = new ArrayList<Year>();
 

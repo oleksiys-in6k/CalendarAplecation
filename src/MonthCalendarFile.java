@@ -36,7 +36,7 @@ public class MonthCalendarFile {
                 + File.separator
                 + c.get(calendar.YEAR)
                 +  File.separator
-                +  setCorrectMonth(c.get(Calendar.MONTH))
+                +  new SwitchesOfMonth().getMonthNameByIndex((c.get(Calendar.MONTH)))
                 + HTMLEXTENSION;
     }
 
@@ -52,21 +52,4 @@ public class MonthCalendarFile {
         writer.close();
     }
 
-    private String setCorrectMonth(int c) {
-        switch (c) {
-            case Calendar.JANUARY:  return "janyary";
-            case Calendar.FEBRUARY: return "february";
-            case Calendar.MARCH:    return "march";
-            case Calendar.APRIL:    return "april";
-            case Calendar.MAY:      return "may";
-            case Calendar.JUNE:     return "june";
-            case Calendar.JULY:     return "july";
-            case Calendar.AUGUST:   return "august";
-            case Calendar.SEPTEMBER:return "september";
-            case Calendar.OCTOBER:  return "october";
-            case Calendar.NOVEMBER: return "november";
-            case Calendar.DECEMBER: return "december";
-        }
-        return null;
-    }
 }
