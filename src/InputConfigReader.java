@@ -1,15 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class InputConfigReader {
 
-    public ArrayList<Year> getYearsFromConfig() throws FileNotFoundException {
-        ArrayList<Year> result;
-        result = new ArrayList<Year>();
+    public List<Year> getYearsFromConfig() throws FileNotFoundException {
+        List<Year> result = new LinkedList<Year>();
 
         File fileConfig = new File("config.txt");
 
@@ -18,7 +15,7 @@ public class InputConfigReader {
 
         while (in.hasNextLine()) {
             int year = 0;
-            ArrayList<String> list = new ArrayList<>();
+            LinkedList<String> list = new LinkedList<>();
 
             if (in.hasNextInt()) {
                 year = in.nextInt();
@@ -30,6 +27,8 @@ public class InputConfigReader {
             }
             result.add(new Year(year, list));
         }
+
+        Collections.sort(result);
 
         return result;
     }

@@ -8,24 +8,24 @@ public class SwitchesOfMonth {
 
     public int getMonthIndexByName(String s) {
         switch (s.toLowerCase()) {
-            case "january":         return Calendar.JANUARY;
-            case "february":        return Calendar.FEBRUARY;
-            case "march":           return Calendar.MARCH;
-            case "april":           return Calendar.APRIL;
-            case "may":             return Calendar.MARCH;
-            case "june":            return Calendar.JUNE;
-            case "july":            return Calendar.JULY;
-            case "august":          return Calendar.AUGUST;
-            case "september":       return Calendar.SEPTEMBER;
-            case "october":         return Calendar.OCTOBER;
-            case "november":        return Calendar.NOVEMBER;
-            case "december":        return Calendar.DECEMBER;
+            case "january":     return Calendar.JANUARY;
+            case "february":    return Calendar.FEBRUARY;
+            case "march":       return Calendar.MARCH;
+            case "april":       return Calendar.APRIL;
+            case "may":         return Calendar.MARCH;
+            case "june":        return Calendar.JUNE;
+            case "july":        return Calendar.JULY;
+            case "august":      return Calendar.AUGUST;
+            case "september":   return Calendar.SEPTEMBER;
+            case "october":     return Calendar.OCTOBER;
+            case "november":    return Calendar.NOVEMBER;
+            case "december":    return Calendar.DECEMBER;
         }
         return -1;
     }
 
-    public String getMonthNameByIndex(int c) {
-        switch (c) {
+    public String getMonthNameByIndex(int numberOfMonth) {
+        switch (numberOfMonth) {
             case Calendar.JANUARY:  return "january";
             case Calendar.FEBRUARY: return "february";
             case Calendar.MARCH:    return "march";

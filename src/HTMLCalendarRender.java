@@ -17,6 +17,12 @@ public class HTMLCalendarRender extends AbstractMonthCalendarRenderer {
 
     private static final String SPACE = " ";
 
+    private static final String LINK_OPEN = "a href=\"";
+    private static final String LINK_CLOSE = "<\\a ";
+    private static final String TEXTNEXT = "<NEXT ";
+    private static final String TEXTPREW = "<PREW ";
+
+
     private static final String COLOR = "bgcolor=";
     private static final String RED = "\"#FF0000\"";
     private static final String BLACK = "\"#000000\"";

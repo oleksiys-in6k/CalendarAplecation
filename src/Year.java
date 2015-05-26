@@ -1,30 +1,31 @@
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.*;
 
-public class Year {
+public class Year implements Comparable {
 
     int year;
-    ArrayList<MonthCalendarFile> monthes = new ArrayList<MonthCalendarFile>();
+    LinkedList<MonthCalendarFile> months = new LinkedList<MonthCalendarFile>();
 
-    public Year(int year, ArrayList<String> sMonthes) {
+    int linkPrew;
+    int linkNext;
+
+    public Year(int year, LinkedList<String> sMonthes) {
         this.year = year;
-        fillMonthes(sMonthes);
+        fillMonths(sMonthes);
     }
 
-    private void fillMonthes(ArrayList<String> sMonthes) {
+    private void fillMonths(LinkedList<String> sMonthes) {
         if (sMonthes.size() == 0)
-            inputAllMonthes();
+            inputAllMonths();
         else {
+            sortingMonths(sMonthes);
             inputExistingMonth(sMonthes);
-
-            sortingMonthes(sMonthes);
         }
     }
 
-    private void sortingMonthes(ArrayList<String> sMonthes) {
-        ArrayList <Integer> listOfMonthsIndex = new ArrayList();
+    private void sortingMonths(LinkedList<String> sMonthes) {
+        LinkedList <Integer> listOfMonthsIndex = new LinkedList();
         for ( int  i= 0 ; i < sMonthes.size(); i++)
             listOfMonthsIndex.add(new SwitchesOfMonth().getMonthIndexByName(sMonthes.get(i)));
 
@@ -32,39 +33,40 @@ public class Year {
         sMonthes.clear();
 
         for (int i = 0;  i < listOfMonthsIndex.size(); i++) {
-            sMonthes.add(new SwitchesOfMonth().getMonthNameByIndex(listOfMonthsIndex.get(i)));
+            String currMonth = new SwitchesOfMonth().getMonthNameByIndex(listOfMonthsIndex.get(i));
+            sMonthes.add(currMonth);
+
         }
-        System.out.println(listOfMonthsIndex);
-        System.out.println(sMonthes);
     }
 
-    private void inputExistingMonth(ArrayList<String> sMonthes) {
+    private void inputExistingMonth(LinkedList<String> sMonthes) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.DAY_OF_MONTH, 1);
 
         for (String sMonthe : sMonthes) {
             c.set(Calendar.MONTH, new SwitchesOfMonth().getMonthIndexByName(sMonthe));
-            monthes.add(new MonthCalendarFile(c));
+            months.add(new MonthCalendarFile(c));
         }
     }
 
-
-    private void inputAllMonthes() {
+    private void inputAllMonths() {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.DAY_OF_MONTH, 1);
 
         for (int monthNumber = 0; monthNumber < 12; monthNumber++  ) {
             c.set(Calendar.MONTH, monthNumber);
-            monthes.add(new MonthCalendarFile(c));
+            months.add(new MonthCalendarFile(c));
         }
-
     }
 
-    public void writeToFile() throws FileNotFoundException {
-        for(MonthCalendarFile mcf : monthes) {
-            mcf.writeToFile();
-        }
+    public LinkedList<MonthCalendarFile> getMonths() {
+        return months;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return Integer.compare(year, ((Year) o).year);
     }
 }
