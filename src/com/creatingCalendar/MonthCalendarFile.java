@@ -1,3 +1,10 @@
+package com.creatingCalendar;
+
+import com.fillMonthCalendar.MonthCalendar;
+import com.render.ConsoleCalendarRender;
+import com.render.HTMLCalendarRender;
+import com.render.ICalendarRender;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -20,7 +27,6 @@ public class MonthCalendarFile {
         this.file = new File(getPathToFile(calendar));
 
         deleteOutputDirectory( new File(OUTPUT_DIR));
-
     }
 
     private void deleteOutputDirectory(File directory) {
@@ -37,14 +43,14 @@ public class MonthCalendarFile {
     private String getPathToFile(Calendar c) {
         return OUTPUT_DIR
                 + File.separator
-                + c.get(calendar.YEAR)
+                + c.get(Calendar.YEAR)
                 + File.separator
                 + new SwitchesOfMonth().getMonthNameByIndex((c.get(Calendar.MONTH)))
                 + HTMLEXTENSION;
     }
 
     public void writeToFile(MonthCalendarFile previous, MonthCalendarFile next) throws FileNotFoundException {
-        File directory = new File(file.getParent() + "/");
+        File directory = new File(file.getParent() + File.separator);
         if (!directory.exists()) {
             directory.mkdirs();
         }
@@ -58,11 +64,17 @@ public class MonthCalendarFile {
             writer.println(next.getLink());
         }
 
-
         iCalendarRender = new HTMLCalendarRender();
         writer.println("<h1>" + getMonthTitle() + "</h1>");
         writer.println(iCalendarRender.render(monthCalendar));
         writer.close();
+    }
+
+    public void writeToConsole (MonthCalendarFile previous, MonthCalendarFile next) {
+        iCalendarRender = new ConsoleCalendarRender();
+        System.out.println(getMonthTitle() );
+        System.out.println(iCalendarRender.render(monthCalendar));
+
     }
 
     private String getLink() {

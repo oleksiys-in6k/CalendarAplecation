@@ -1,14 +1,21 @@
+package com.render;
+
+import com.fillMonthCalendar.WeekDayType;
 
 public class ConsoleCalendarRender extends AbstractMonthCalendarRenderer {
 
     private static final String RED = "\u001B[31m";
     private static final String BLACK = "\u001B[0m";
+    private static final String YELLOW = "\u001B[33m";
     private static final String TAB = "\t";
     private static final String ENTER = "\n";
+    private static final String EMPTY = "";
 
     @Override
-    public String getOpenDayToken(WeekDayType dayDayType) {
-        return TAB;
+    public String getOpenDayToken(WeekDayType dayType) {
+        return dayType.isWeekendsDay()
+        ? TAB + RED
+        : TAB + BLACK;
     }
 
     @Override
@@ -18,7 +25,7 @@ public class ConsoleCalendarRender extends AbstractMonthCalendarRenderer {
 
     @Override
     public String getOpenWeekToken() {
-        return "";
+        return EMPTY;
     }
 
     @Override
@@ -28,22 +35,22 @@ public class ConsoleCalendarRender extends AbstractMonthCalendarRenderer {
 
     @Override
     public String getOpenMonthToken() {
-        return "";
+        return EMPTY;
     }
 
     @Override
     public String getCloseMonthToken() {
-        return "";
+        return EMPTY;
     }
 
     @Override
     public String getOpenTitleToken() {
-        return TAB ;
+        return YELLOW + TAB;
     }
 
     @Override
     public String getCloseTitleToken() {
-        return TAB;
+        return BLACK + TAB ;
     }
 
 }

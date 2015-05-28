@@ -1,3 +1,5 @@
+package com.creatingCalendar;
+
 import java.io.FileNotFoundException;
 import java.util.Calendar;
 import java.util.*;
@@ -6,9 +8,6 @@ public class Year implements Comparable {
 
     int year;
     LinkedList<MonthCalendarFile> months = new LinkedList<MonthCalendarFile>();
-
-    int linkPrew;
-    int linkNext;
 
     public Year(int year, LinkedList<String> sMonthes) {
         this.year = year;

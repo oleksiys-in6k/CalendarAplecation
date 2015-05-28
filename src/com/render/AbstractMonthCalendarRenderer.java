@@ -1,6 +1,14 @@
+package com.render;
+
+
+import com.fillMonthCalendar.MonthCalendar;
+import com.fillMonthCalendar.Week;
+import com.fillMonthCalendar.WeekDay;
+import com.fillMonthCalendar.WeekDayType;
+
 public abstract class AbstractMonthCalendarRenderer implements ICalendarRender {
 
-    @Override
+
     public String render(MonthCalendar monthCalendar) {
 
         String result = "";
@@ -25,7 +33,7 @@ public abstract class AbstractMonthCalendarRenderer implements ICalendarRender {
         return result;
     }
 
-    private String renderHeader ( ) {
+    private String renderHeader () {
         String result="";
         for (WeekDayType weekDayType : WeekDayType.values()) {
             result += getOpenTitleToken();

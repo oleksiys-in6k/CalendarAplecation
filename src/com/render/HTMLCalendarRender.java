@@ -1,3 +1,6 @@
+package com.render;
+
+import com.fillMonthCalendar.WeekDayType;
 
 public class HTMLCalendarRender extends AbstractMonthCalendarRenderer {
 

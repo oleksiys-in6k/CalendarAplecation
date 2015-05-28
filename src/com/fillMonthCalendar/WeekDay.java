@@ -1,6 +1,6 @@
+package com.fillMonthCalendar;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class WeekDay {
     WeekDayType type;
