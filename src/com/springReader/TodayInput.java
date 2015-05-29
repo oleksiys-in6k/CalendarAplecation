@@ -1,13 +1,11 @@
 package com.springReader;
 
-import com.Run.IMonthReader;
-import com.creatingCalendar.MonthCalendarFile;
-import com.creatingCalendar.SwitchesOfMonth;
 import com.creatingCalendar.Year;
+import com.fillMonthCalendar.MonthCalendar;
+import com.run.IMonthReader;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,24 +15,18 @@ public class TodayInput implements IMonthReader {
 
 
     @Override
-    public List<Year> getYears() {
+    public List<MonthCalendar> getYears() {
 
         List<Year> result = new ArrayList<>();
-        int year = 0;
-        String month = null;
-        int intmonth = 0;
+
         Calendar calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-        MonthCalendarFile monthCalendarFile = new MonthCalendarFile(calendar);
-        intmonth = calendar.get(Calendar.MONTH);
+        calendar.set(Calendar.DAY_OF_MONTH,1);
 
-        List months = new ArrayList<>();
-        month = SwitchesOfMonth.getMonthNameByIndex(intmonth);
-        months.add(month);
+        MonthCalendar monthCalendar = new MonthCalendar(calendar);
+        List <MonthCalendar> list = new ArrayList <> ();
+        list.add(monthCalendar);
 
-        result.add(year, (Year) months);
-
-        return result;
+        return list;
     }
 }
 

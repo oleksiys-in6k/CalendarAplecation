@@ -1,25 +1,18 @@
-    <!--<bean id ="consoleOut" class="com.render.ConsoleCalendarRender"/>-->
-    <!--<bean id ="HTMLOut" class="com.render.HTMLCalendarRender"/>-->
-
-    <!--<bean id ="CalendarApplication" class="com.Run.CalendarApplication" >-->
-        <!--<property name="reader" ref="consoleOut" />-->
-        <!--<property name="calendarRender" ref="HTMLOut"/>-->
-    <!--</bean>>-->
-
-        <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="config" class="com.springReader.ConfigFile" />
-    <bean id="console" class="com.springReader.ConsoleInput" />
+    <!--<bean id="config" class="com.springReader.ConfigFile" />-->
+    <!--<bean id="console" class="com.springReader.ConsoleInput" />-->
     <bean id="today" class="com.springReader.TodayInput" />
 
 <bean id="consoleOut" class="com.render.ConsoleCalendarRender" />
+    <bean id="consoleInput" class="com.springReader.ConsoleInput" />
 <bean id="htmlOut" class="com.render.HTMLCalendarRender"/>
 
-<bean id="calendarApp" class="com.Run.CalendarApplication">
-    <property name="reader" ref="consoleOut" />
+<bean id="calendarApp" class="com.run.CalendarApplication">
+    <property name="reader" ref="consoleInput" />
     <property name="calendarRender" ref="htmlOut"/>
 </bean>
 </beans>
