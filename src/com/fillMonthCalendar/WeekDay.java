@@ -14,6 +14,10 @@ public class WeekDay {
         this.calendar = c;
     }
 
+    public boolean isLastDayOfWeek() {
+        return getCalendar().get(Calendar.DAY_OF_MONTH) ==  getCalendar().getActualMaximum(Calendar.DAY_OF_MONTH);
+    }
+
     public WeekDayType getType() {
         return type;
     }

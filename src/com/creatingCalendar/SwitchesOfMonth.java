@@ -26,7 +26,7 @@ public class SwitchesOfMonth {
         return -1;
     }
 
-    public String getMonthNameByIndex(int numberOfMonth) {
+    public static String getMonthNameByIndex(int numberOfMonth) {
         switch (numberOfMonth) {
             case Calendar.JANUARY:  return "january";
             case Calendar.FEBRUARY: return "february";
@@ -43,5 +43,4 @@ public class SwitchesOfMonth {
         }
         return null;
     }
-
 }

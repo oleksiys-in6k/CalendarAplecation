@@ -19,7 +19,7 @@ public class MonthCalendar {
         do {
             week = week.createNextWeek();
             weeks.add(week);
-        } while (week.isCurrentMonth(calendar));
+        } while (week.isCurrentMonth() && !week.isLastDayOfWeek());
     }
 
     public ArrayList<Week> getWeeks() {

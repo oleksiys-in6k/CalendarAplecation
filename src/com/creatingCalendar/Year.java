@@ -60,7 +60,12 @@ public class Year implements Comparable {
         }
     }
 
+    public void setMonths(LinkedList<MonthCalendarFile> months) {
+        this.months = months;
+    }
+
     public LinkedList<MonthCalendarFile> getMonths() {
+
         return months;
     }
 

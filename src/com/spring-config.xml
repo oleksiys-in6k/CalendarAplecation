@@ -1,21 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+    <!--<bean id ="consoleOut" class="com.render.ConsoleCalendarRender"/>-->
+    <!--<bean id ="HTMLOut" class="com.render.HTMLCalendarRender"/>-->
 
+    <!--<bean id ="CalendarApplication" class="com.Run.CalendarApplication" >-->
+        <!--<property name="reader" ref="consoleOut" />-->
+        <!--<property name="calendarRender" ref="HTMLOut"/>-->
+    <!--</bean>>-->
+
+        <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-       <!-- Definition for textEditor bean -->
+    <bean id="config" class="com.springReader.ConfigFile" />
+    <bean id="console" class="com.springReader.ConsoleInput" />
+    <bean id="today" class="com.springReader.TodayInput" />
 
-    <bean id ="consoleOut" class="com.render.ConsoleCalendarRender"></bean>
-    <bean id ="HTMLOut" class="com.render.HTMLCalendarRender"></bean>
+<bean id="consoleOut" class="com.render.ConsoleCalendarRender" />
+<bean id="htmlOut" class="com.render.HTMLCalendarRender"/>
 
-    <bean id ="CalendarApplication" class="com.Run.CalendarApplication" >
-        <property name="printToConsole" ref="consoleOut" />
-        <property name="printToHTML" ref="HTMLOut"/>
-    </bean>>
-
-
-
-
+<bean id="calendarApp" class="com.Run.CalendarApplication">
+    <property name="reader" ref="consoleOut" />
+    <property name="calendarRender" ref="htmlOut"/>
+</bean>
 </beans>

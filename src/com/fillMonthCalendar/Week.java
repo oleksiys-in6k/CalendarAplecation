@@ -23,7 +23,7 @@ public class Week {
 
         int currentDayOfWeek = c.get(Calendar.DAY_OF_WEEK);
 
-        c.add(Calendar.DAY_OF_YEAR, - (currentDayOfWeek - 1));
+        c.add(Calendar.DAY_OF_YEAR, -(currentDayOfWeek - 1));
 
         for (int i = 0; i < DAYS_IN_WEEK; i++) {
             weekDays.add(new WeekDay(c));
@@ -35,14 +35,12 @@ public class Week {
         Calendar c = Calendar.getInstance();
 
         c.setTime(weekDays.get(6).getCalendar().getTime());
-        c.add(Calendar.DAY_OF_YEAR, 1 );
+        c.add(Calendar.DAY_OF_YEAR, 1);
 
         return new Week(c);
     }
 
-    public boolean isCurrentMonth(Calendar calendar) {
-        Calendar c = Calendar.getInstance();
-        c.setTime(calendar.getTime());
+    public boolean isCurrentMonth() {
         return weekDays.get(0).getCalendar().get(Calendar.MONTH) == weekDays.get(6).getCalendar().get(Calendar.MONTH);
     }
 
@@ -50,5 +48,8 @@ public class Week {
         return weekDays;
     }
 
+    public boolean isLastDayOfWeek() {
+        return weekDays.get(6).getCalendar().get(Calendar.DAY_OF_MONTH) ==  weekDays.get(6).getCalendar().getActualMaximum(Calendar.DAY_OF_MONTH);
+    }
 }
 

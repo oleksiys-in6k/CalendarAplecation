@@ -6,7 +6,7 @@ import com.fillMonthCalendar.Week;
 import com.fillMonthCalendar.WeekDay;
 import com.fillMonthCalendar.WeekDayType;
 
-public abstract class AbstractMonthCalendarRenderer implements ICalendarRender {
+public abstract class AbstractMonthCalendarRenderer implements CalendarRender {
 
 
     public String render(MonthCalendar monthCalendar) {

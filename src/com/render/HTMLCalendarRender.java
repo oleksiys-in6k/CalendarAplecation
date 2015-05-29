@@ -5,8 +5,8 @@ import com.fillMonthCalendar.WeekDayType;
 public class HTMLCalendarRender extends AbstractMonthCalendarRenderer {
 
 
-    public static final String MONTH_OPEN = "<html>\n<head>\n</head>\n<body>\n<table border=1>";
-    public static final String MONTH_CLOSE = "</table>\n</body>\n</html>";
+    public static final String MONTH_OPEN = "<cmdln>\n<head>\n</head>\n<body>\n<table border=1>";
+    public static final String MONTH_CLOSE = "</table>\n</body>\n</cmdln>";
 
     private static final String TAB = "\t";
     private static final String ENTER = "\n";
