@@ -3,8 +3,8 @@ package com.run;
 import com.creatingCalendar.InputConfigReader;
 import com.creatingCalendar.MonthCalendarFile;
 import com.creatingCalendar.Year;
+import com.fillMonthCalendar.MonthCalendar;
 import com.render.CalendarRender;
-import com.springReader.TodayInput;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -12,23 +12,20 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class CalendarApplication {
-    CalendarRender calendarRender;
-    IMonthReader reader;
+    private CalendarRender calendarRender;
+    private IMonthReader reader;
 //    TodayInput now;
-//    ConfigFile configFile;
+//    ConfigFileInput configFile;
 
-    public void execute() {
+    public void execute() throws FileNotFoundException {
 
-        IMonthReader iMonthReader = new TodayInput();
-        System.out.println(iMonthReader.getYears().toString());
+        List <MonthCalendar> monthCalendars = reader.getMonths();
+        //System.out.println(monthCalendars.get(0));
+        for (MonthCalendar month : monthCalendars)
+            System.out.println(calendarRender.render(month));
 
-//        System.out.println(iMonthReader.getYears().toString());
-//        List<Year> years = iMonthReader.getYears();
-//        System.out.println(years.size());
-//
-//        for (Year year : years) {
-//            monthCalendars.addAll(year.getMonths());
-//        }
+
+
     }
 
     public void setReader(IMonthReader reader) {

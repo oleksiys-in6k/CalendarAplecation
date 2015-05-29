@@ -1,5 +1,7 @@
 package com.creatingCalendar;
 
+import com.fillMonthCalendar.MonthCalendar;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -7,32 +9,45 @@ import java.util.*;
 
 public class InputConfigReader {
 
-    public List<Year> getYearsFromConfig() throws FileNotFoundException {
-        List<Year> result = new LinkedList<Year>();
+    public List<MonthCalendar> getMOnthsFromConfig() throws FileNotFoundException {
+        List<MonthCalendar> result = new LinkedList<MonthCalendar>();
 
-        File fileConfig = new File("config.txt");
-
-        Scanner in = new Scanner(fileConfig);
+        Scanner in = new Scanner(new File("config.txt"));
 
 
         while (in.hasNextLine()) {
+            Calendar calendar  = Calendar.getInstance();
             int year = 0;
-            LinkedList<String> list = new LinkedList<>();
+            LinkedList <MonthCalendar> listOfMonth = new LinkedList<>();
 
             if (in.hasNextInt()) {
-                year = in.nextInt();
+                year = calendar.get(Calendar.YEAR);
             }
-            if (!in.hasNextInt())
-             {
-                String s =  in.nextLine().trim();
-                list.addAll(Arrays.asList(s.split(" ")));
-            }
-            result.add(new Year(year, list));
+            if (!in.hasNextInt()) {
+                String s = in.nextLine().trim();
+                listOfMonth.addAll(Arrays.asList(s.split(" ")));
+                result.addAll(new Year(year, listOfMonth));
         }
 
         Collections.sort(result);
 
+            //ToDo Here
+
         return result;
     }
+
+
+//    public List<MonthCalendar> creatingListOfAllMonths() throws FileNotFoundException {
+//        InputConfigReader config = new InputConfigReader();
+//        List<Year> years = config.getYearsFromConfig();
+//
+//        List<MonthCalendar> allMonths = new ArrayList<>();
+//
+//        for (Year year : years) {
+//            allMonths.addAll(year.getMonths());
+//        }
+//        return allMonths;
+//    }
+//}
 
 }

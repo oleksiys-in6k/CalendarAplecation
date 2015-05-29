@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         BeanFactory beanFactory = new FileSystemXmlApplicationContext("src/com/spring-config.xml");
-        CalendarApplication calendarApplication = (CalendarApplication) beanFactory.getBean("calendarApp");
+        CalendarApplication calendarApplication = (CalendarApplication) beanFactory.getBean("CalendarApplication");
         calendarApplication.execute();
 
 
